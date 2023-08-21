@@ -5,7 +5,8 @@
   "default": "index.html",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist"
+    "build": "parcel build index.html --dist-dir ./dist",
+    "postinstall": "patch-package"
   },
   "author": "amirali jani",
   "license": "ISC",
@@ -18,6 +19,7 @@
   "dependencies": {
     "core-js": "^3.32.0",
     "fractional": "^1.0.0",
+    "patch-package": "^8.0.0",
     "regenerator-runtime": "^0.14.0"
   }
 }
