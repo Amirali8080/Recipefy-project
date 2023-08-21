@@ -18,7 +18,9 @@
   },
   "dependencies": {
     "core-js": "^3.32.0",
+    "fraction.js": "^4.2.1",
     "fractional": "^1.0.0",
+    "mathjs": "^11.9.1",
     "patch-package": "^8.0.0",
     "regenerator-runtime": "^0.14.0"
   }

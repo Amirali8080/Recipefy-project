@@ -1,11 +1,16 @@
 import View from "./View";
 import icons from "url:../../img/icons.svg";
-import { Fraction } from "fractional";
-// const fractional = require('fractional');
+// import { Fraction } from "fraction.js";
+import { create, all } from "mathjs";
+const config = {
+  number: "Fraction",
+};
 class RecipeView extends View {
   _parentEl = document.querySelector(".recipe");
   _errorMessage = "We could not find that recipe. Please try another one!";
   _message = "";
+
+  math = create(all, config);
 
   addHandlerRender(handler) {
     ["load", "hashchange"].forEach((ev) =>
@@ -96,7 +101,10 @@ class RecipeView extends View {
                 <use href="${icons}#icon-check"></use>
               </svg>
               <div class="recipe__quantity">${
-                ing.quantity ? new Fraction(ing.quantity).toString() : ""
+                ing.quantity
+                  ? this.math.fraction(ing.quantity).toString()
+                  : //  new Fraction(ing.quantity).toString()
+                    ""
               }</div>
               <div class="recipe__description">
                 <span class="recipe__unit">${ing.unit}</span>
