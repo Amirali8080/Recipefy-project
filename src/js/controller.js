@@ -20,7 +20,7 @@ const controlRecipe = async function () {
 
     //  0) Update results view to mark selected search result
     resultsView.update(model.getSearchResultsPage());
-    // bookmarksView.update(model.state.bookmarks);
+    bookmarksView.update(model.state.bookmarks);
     //  1) loading recipe
     await model.loadRecipe(id);
     //  2) render recipe
@@ -64,18 +64,18 @@ const controlServings = function (newSevings) {
   recipeView.update(model.state.recipe);
 };
 
-// const controlAddBookmark = function () {
-//   // Add or Delete bookmarks
-//   if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
-//   else model.removeBookmark(model.state.recipe.id);
-//   // Update recipe view
-//   recipeView.update(model.state.recipe);
-//   // Render bookmarks
-//   bookmarksView.render(model.state.bookmarks);
-// };
-// const controlBookmark = function () {
-//   bookmarksView.render(model.state.bookmarks);
-// };
+const controlAddBookmark = function () {
+  // Add or Delete bookmarks
+  if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
+  else model.removeBookmark(model.state.recipe.id);
+  // Update recipe view
+  recipeView.update(model.state.recipe);
+  // Render bookmarks
+  bookmarksView.render(model.state.bookmarks);
+};
+const controlBookmark = function () {
+  bookmarksView.render(model.state.bookmarks);
+};
 
 const controlAddRecipe = async function (newRecipe) {
   try {
@@ -89,7 +89,7 @@ const controlAddRecipe = async function (newRecipe) {
     // success message
     addRecipeView.renderMessage();
     // Render bookmarks view
-    // bookmarksView.render(model.state.bookmarks);
+    bookmarksView.render(model.state.bookmarks);
     //Change ID in URL
     window.history.pushState(null, "", `#${model.state.recipe.id}`);
     // close form window
@@ -103,10 +103,10 @@ const controlAddRecipe = async function (newRecipe) {
 };
 
 const init = function () {
-  // bookmarksView.addHandlerRender(controlBookmark);
+  bookmarksView.addHandlerRender(controlBookmark);
   recipeView.addHandlerRender(controlRecipe);
   recipeView.addHandlerUpdateServings(controlServings);
-  // recipeView.addHandlerAddBookmark(controlAddBookmark);
+  recipeView.addHandlerAddBookmark(controlAddBookmark);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
