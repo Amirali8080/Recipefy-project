@@ -1,4 +1,4 @@
-import View from "./View";
+import View from "./View.js";
 import icons from "url:../../img/icons.svg";
 
 class BookmarksView extends View {
@@ -9,7 +9,7 @@ class BookmarksView extends View {
     window.addEventListener("load", handler);
   }
   _generateMarkup() {
-    return this._data.map(this._generateMarkupPreview).join("");
+    return this._data?.map(this._generateMarkupPreview).join("");
   }
   _generateMarkupPreview(result) {
     const id = window.location.hash.slice(1);
