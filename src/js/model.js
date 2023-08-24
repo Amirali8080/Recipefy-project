@@ -13,8 +13,7 @@ export const state = {
 
   bookmarks: [],
 };
-state.bookmarks.push(23);
-console.log(state.bookmarks);
+
 const creatRecipeObject = function (data) {
   const { recipe } = data.data;
   return {
