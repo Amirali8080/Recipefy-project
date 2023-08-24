@@ -11,7 +11,7 @@ export const state = {
     resultsPerPage: 10,
   },
 
-  bookmarks: (number = []),
+  bookmarks: [],
 };
 state.bookmarks.push(23);
 console.log(state.bookmarks);
